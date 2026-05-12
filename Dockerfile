@@ -1,9 +1,9 @@
 FROM parseable/parseable:edge
 
-ENV P_ADDR=0.0.0.0:8080
+ENV P_ADDR=0.0.0.0:8000
 ENV P_STAGING_DIR=/data/staging
 
-EXPOSE 8080
+EXPOSE 8000
 
 # This Dockerfile is shared by both the query and ingest services.
 # The two services are differentiated by env vars injected via the Railway template:
@@ -24,6 +24,6 @@ EXPOSE 8080
 #
 # Ingest service only:
 #   P_MODE=ingest
-#   P_INGESTOR_ENDPOINT -> ${{RAILWAY_PRIVATE_DOMAIN}}:8080
+#   P_INGESTOR_ENDPOINT -> ${{RAILWAY_PRIVATE_DOMAIN}}:8000
 #
-# Both services bind to PORT=8080 to align with Railway routing/healthcheck.
+# Both services bind to PORT=8000 to align with Railway routing/healthcheck.

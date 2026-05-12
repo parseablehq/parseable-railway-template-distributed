@@ -6,9 +6,11 @@
 
 For the simpler single-node deployment, see the [standalone template](https://railway.com/deploy/parseable-1).
 
-## About Distributed Parseable
+## About Hosting Parseable
 
-Distributed mode separates the ingestion path from the query path:
+Parseable ingests logs, metrics, and traces via a simple REST API and stores them efficiently on S3-compatible object storage. In **distributed mode**, the ingestion path and query path run as separate services, so each can be scaled and operated independently. With distributed Parseable on Railway, you get a fully managed cluster with shared persistent storage, automatic health checks, public HTTPS endpoints for both nodes, and zero infrastructure setup. The platform supports standard ingestion protocols including OpenTelemetry, Fluent Bit, and direct HTTP, making it a production-ready backend for any observability pipeline.
+
+Distributed mode separates the two paths:
 
 - **Ingest nodes** receive incoming events from log shippers (Fluent Bit, OpenTelemetry Collector, direct HTTP) and write them to object storage.
 - **Query nodes** serve the UI, the SQL API, and read events back from object storage.
@@ -57,7 +59,7 @@ UI / SQL (HTTPS) ────► parseable-query (public domain)
 - [Railway Volumes](https://docs.railway.com/reference/volumes) — persistent disk attached to each Parseable service
 - [Parseable Documentation](https://www.parseable.com/docs) — configuration reference and API docs
 
-### Why Distributed Mode on Railway?
+### Why Deploy Parseable on Railway?
 
 Railway provides one-click deployment with built-in S3-compatible storage via Buckets, persistent volumes, automatic health checks, and public HTTPS URLs for every service. Distributed Parseable benefits from:
 
